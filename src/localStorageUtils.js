@@ -2,7 +2,7 @@ export const USER = 'USER';
 
 export function getUserFromLocalStorage() {
     const user = localStorage.getItem(USER);
-    if (user) return JSON.parse(user.token);
+    if (user) return JSON.parse(user);
     return {
         token: user
     }
