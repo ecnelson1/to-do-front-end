@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
+import './App.css';
 import {
     BrowserRouter as Router, 
     Route, 
     Switch,
 } from 'react-router-dom';
-import CastPage from './castpage.js';
-import HomePage from './home.js';
-import PageHeader from './pageheader.js';
-import CastDetailsPage from './castdetails.js'
-import CreateCharacter from './createCharacter.js'
+import PageHeader from './components/pageheader.js';
+import HomePage from './Home/home.js';
+import SignUpPage from './AuthPages/signup.js'
+import LoginPage from './AuthPages/login.js'
+import TodosPage from './TodosListPage/todos-list.js';
+import { getUserFromLocalStorage, putUserInLocalStorage } from './localStorageUtils.js';
+
 
 export default class App extends Component {
+    state = {
+    token: getUserFromLocalStorage()
+    }
+    handleTokenChange = (token) => { this.setState({ token }) 
+    putUserInLocalStorage(token);
+} 
     render() {
         return (
             <div>
@@ -23,19 +32,20 @@ export default class App extends Component {
                             render={(routerProps) => <HomePage {...routerProps} />} 
                         />
                         <Route 
-                            path="/cast" 
+                            path="/todos" 
                             exact
-                            render={(routerProps) => <CastPage {...routerProps} />} 
+                            token={this.state.token}
+                            render={(routerProps) => <TodosPage token={this.state.token} {...routerProps} />} 
                         />
                         <Route 
-                            path="/cast/:id" 
+                            path="/signup" 
                             exact
-                            render={(routerProps) => <CastDetailsPage {...routerProps} />} 
+                            render={(routerProps) => <SignUpPage handleTokenChange={this.handleTokenChange} {...routerProps} />} 
                         />
                         <Route 
-                            path="/create" 
+                            path="/login" 
                             exact
-                            render={(routerProps) => <CreateCharacter {...routerProps} />} 
+                            render={(routerProps) => <LoginPage handleTokenChange={this.handleTokenChange} {...routerProps} />} 
                         />
                     </Switch>
                 </Router>
