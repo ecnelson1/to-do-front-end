@@ -1,0 +1,21 @@
+import React, { Component } from 'react'
+import { NavLink, withRouter } from 'react-router-dom'
+
+
+
+export default withRouter(class PageHeader extends Component {
+    render() {
+        return (
+            <div> 
+                <NavLink to = "/"> Home</NavLink>
+                {
+                this.props.token && <> <NavLink to ='/todos'>Todos</NavLink>
+                <button onClick={this.handleLogout}>Log Out</button>
+                </>
+                }
+                {!this.props.token && <> <NavLink to = '/login'>Login</NavLink>
+                <NavLink to = '/signup'>Sign Up</NavLink>
+                </>}
+            </div>
+         )
+    }})
