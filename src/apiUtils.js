@@ -17,22 +17,23 @@ export async function loginUser(email, password){
 }
 
 export async function getTodos(token){
-    const todos = await request.get(`${URL}/todos`)
+    const todos = await request
+    .get(`${URL}/api/todos`)
     .set('Authorization', token)
     return todos.body
 };
 
 export async function makeTodo(todo, token) {
     const task = await request
-        .post(`${URL}/todos`)
+        .post(`${URL}/api/todos`)
         .set('Authorization', token)
-        .send(todo);
+        .send({todo});
 
         return task.body;
 };
 export async function CompleteTask(todoid, token) {
     const CompletedTask = await request
-        .put(`${URL}/todos/${todoid}`)
+        .put(`${URL}/api/todos/${todoid}`)
         .set('Authorization', token)
 
         return CompletedTask.body;

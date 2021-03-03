@@ -32,7 +32,8 @@ export default class App extends Component {
                         <Route 
                             path="/todos" 
                             exact
-                            render={(routerProps) => <TodosPage {...routerProps} />} 
+                            token={this.state.token}
+                            render={(routerProps) => <TodosPage token={this.state.token} {...routerProps} />} 
                         />
                         <Route 
                             path="/signup" 
