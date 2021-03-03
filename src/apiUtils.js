@@ -1,19 +1,19 @@
 import request from 'superagent';
 
-const URL = 'https://serene-bayou-70686.herokuapp.com'
+const URL = 'https://hidden-basin-91952.herokuapp.com'
 
 export async function signUpUser(email, password){
     const NewUser = await request
     .post(`${URL}/auth/signup`)
     .send({email, password})
-    return NewUser.body;
+    return NewUser.body.token;
 }
 
 export async function loginUser(email, password){
     const loggedInUser = await request
         .post(`${URL}/signin`)
         .send({ email, password })
-        return loggedInUser.body
+        return loggedInUser.body.token
 }
 
 export async function getTodos(token){

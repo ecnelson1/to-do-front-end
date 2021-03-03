@@ -4,9 +4,10 @@ export default class TodosPage extends Component {
        
         }
       componentDidMount = async () => {
+      }
     render(){
         return (
+            <p> todo list</p>
         )
     }
-}
 }

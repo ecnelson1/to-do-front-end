@@ -9,8 +9,15 @@ import HomePage from './Home/home.js';
 import SignUpPage from './AuthPages/signup.js'
 import LoginPage from './AuthPages/login.js'
 import TodosPage from './TodosListPage/todos-list.js';
+import { getUserFromLocalStorage, putUserInLocalStorage } from './localStorageUtils.js';
 
 export default class App extends Component {
+    state = {
+    token: getUserFromLocalStorage()
+    }
+    handleTokenChange = (token) => { this.setState({ token }) 
+    putUserInLocalStorage(token);
+} 
     render() {
         return (
             <div>
@@ -30,7 +37,7 @@ export default class App extends Component {
                         <Route 
                             path="/signup" 
                             exact
-                            render={(routerProps) => <SignUpPage {...routerProps} />} 
+                            render={(routerProps) => <SignUpPage handleTokenChange={this.handleTokenChange} {...routerProps} />} 
                         />
                         <Route 
                             path="/login" 
