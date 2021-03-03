@@ -11,7 +11,7 @@ export async function signUpUser(email, password){
 
 export async function loginUser(email, password){
     const loggedInUser = await request
-        .post(`${URL}/signin`)
+        .post(`${URL}/auth/signin`)
         .send({ email, password })
         return loggedInUser.body.token
 }

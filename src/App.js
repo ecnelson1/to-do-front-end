@@ -42,7 +42,7 @@ export default class App extends Component {
                         <Route 
                             path="/login" 
                             exact
-                            render={(routerProps) => <LoginPage {...routerProps} />} 
+                            render={(routerProps) => <LoginPage handleTokenChange={this.handleTokenChange} {...routerProps} />} 
                         />
                     </Switch>
                 </Router>
