@@ -6,7 +6,7 @@ import { NavLink, withRouter } from 'react-router-dom'
 export default withRouter(class PageHeader extends Component {
     render() {
         return (
-            <div> 
+            <div className='header'> 
                 <NavLink to = "/"> Home</NavLink>
                 {
                 this.props.token && <> <NavLink to ='/todos'>Todos</NavLink>

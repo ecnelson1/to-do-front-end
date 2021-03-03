@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 import {
     BrowserRouter as Router, 
     Route, 
@@ -10,6 +11,7 @@ import SignUpPage from './AuthPages/signup.js'
 import LoginPage from './AuthPages/login.js'
 import TodosPage from './TodosListPage/todos-list.js';
 import { getUserFromLocalStorage, putUserInLocalStorage } from './localStorageUtils.js';
+
 
 export default class App extends Component {
     state = {

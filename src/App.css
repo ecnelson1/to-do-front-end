@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+.task {
+  border: solid 3px rgb(91, 209, 68);
+  border-radius: 5px;
+  width: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  background-color: crimson;
+}
+
+.task:hover {
+  background-color: rgb(13, 114, 37);
+}
+
+.completed {
+  text-decoration: line-through;
+  background-color: chartreuse;
+}
+.header{
+  justify-content: space-evenly;
+  padding: 15px;
+}
+
+a {
+  margin: 5px;
+}
